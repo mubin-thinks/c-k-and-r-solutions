@@ -18,6 +18,11 @@ int main(int argc, char **argv) {
         struct file_with_line_t file_1, file_2;
         file_1.fp = fopen(argv[1], "r");
         file_2.fp = fopen(argv[2], "r");
+        if (!file_1.fp || !file_2.fp) {
+                if (!file_1.fp && !file_2.fp) printf("error: cannot open files.\n");
+                else printf("error: cannot open '%s'\n", file_1.fp ? argv[2] : argv[1]);
+                exit(2);
+        }
         for (
                 ;
                 fgets(file_1.line, sizeof(file_1.line), file_1.fp) &&
