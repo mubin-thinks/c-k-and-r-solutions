@@ -40,7 +40,7 @@ int main(int argc, char **argv) {
                         break;
                 }
         }
-        free(file_1.fp);
-        free(file_2.fp);
+        fclose(file_1.fp);
+        fclose(file_2.fp);
         return 0;
 }
